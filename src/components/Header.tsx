@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -9,7 +10,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
-import { Coffee, Clock, Menu, X } from 'lucide-react';
+import { Coffee, Clock, Menu, X, ShoppingBag, Utensils } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -53,6 +54,7 @@ const Header = () => {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
+              
               <NavigationMenuItem>
                 <NavigationMenuTrigger>О кофе</NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -74,9 +76,28 @@ const Header = () => {
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
+              
+              <NavigationMenuItem>
+                <Link to="/menu">
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "nav-link-animation")}>
+                    <Utensils className="h-4 w-4 mr-1" />
+                    Меню
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              
+              <NavigationMenuItem>
+                <Link to="/catalog">
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "nav-link-animation")}>
+                    <ShoppingBag className="h-4 w-4 mr-1" />
+                    Каталог
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+              
               <NavigationMenuItem>
                 <Link to="/blog">
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "nav-link-animation")}>
                     Блог
                   </NavigationMenuLink>
                 </Link>
@@ -89,10 +110,10 @@ const Header = () => {
         <Button 
           variant="ghost" 
           size="icon" 
-          className="md:hidden"
+          className="md:hidden button-pulse"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X className="animate-spin-once" /> : <Menu className="animate-wiggle" />}
         </Button>
 
         {/* Mobile Menu */}
@@ -103,7 +124,7 @@ const Header = () => {
                 <li>
                   <Link 
                     to="/" 
-                    className="text-lg font-medium block py-2 hover:text-primary"
+                    className="text-lg font-medium block py-2 hover:text-primary mobile-nav-link"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Главная
@@ -111,8 +132,28 @@ const Header = () => {
                 </li>
                 <li>
                   <Link 
+                    to="/menu" 
+                    className="text-lg font-medium block py-2 hover:text-primary mobile-nav-link"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Utensils className="h-5 w-5 mr-2 inline" />
+                    Меню
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/catalog" 
+                    className="text-lg font-medium block py-2 hover:text-primary mobile-nav-link"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <ShoppingBag className="h-5 w-5 mr-2 inline" />
+                    Каталог
+                  </Link>
+                </li>
+                <li>
+                  <Link 
                     to="/article/1" 
-                    className="text-lg font-medium block py-2 hover:text-primary"
+                    className="text-lg font-medium block py-2 hover:text-primary mobile-nav-link"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Приготовление кофе
@@ -121,7 +162,7 @@ const Header = () => {
                 <li>
                   <Link 
                     to="/article/2" 
-                    className="text-lg font-medium block py-2 hover:text-primary"
+                    className="text-lg font-medium block py-2 hover:text-primary mobile-nav-link"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Виды кофейных зерен
@@ -130,7 +171,7 @@ const Header = () => {
                 <li>
                   <Link 
                     to="/blog" 
-                    className="text-lg font-medium block py-2 hover:text-primary"
+                    className="text-lg font-medium block py-2 hover:text-primary mobile-nav-link"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Блог

@@ -115,6 +115,33 @@ export default {
 					'100%': { 
 						transform: 'translateY(0px)' 
 					},
+				},
+				'wiggle': {
+					'0%, 100%': { 
+						transform: 'rotate(0deg)' 
+					},
+					'25%': { 
+						transform: 'rotate(-10deg)' 
+					},
+					'75%': { 
+						transform: 'rotate(10deg)' 
+					},
+				},
+				'pulse': {
+					'0%, 100%': { 
+						transform: 'scale(1)' 
+					},
+					'50%': { 
+						transform: 'scale(1.1)' 
+					},
+				},
+				'spin': {
+					from: {
+						transform: 'rotate(0deg)'
+					},
+					to: {
+						transform: 'rotate(360deg)'
+					}
 				}
 			},
 			animation: {
@@ -123,6 +150,9 @@ export default {
 				'fade-in': 'fade-in 0.6s ease-out forwards',
 				'scale-in': 'scale-in 0.4s ease-out forwards',
 				'float': 'float 4s ease-in-out infinite',
+				'wiggle': 'wiggle 1s ease-in-out',
+				'pulse': 'pulse 2s infinite',
+				'spin-once': 'spin 0.5s ease-out'
 			}
 		}
 	},
